@@ -10,7 +10,7 @@ contract Timelock {
     address payable public owner;
     uint public constant duration = 365 days;
     constructor() {
-        owner = msg.sender;
+        owner = address(uint160(msg.sender));
         end = block.timestamp + duration;
     }
 

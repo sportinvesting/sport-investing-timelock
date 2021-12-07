@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 /// @custom:security-contact blockchain@sportinvesting.com
 
 contract TokenLock {
-    uint256 public immutable end;
     address payable public owner;
+    uint256 public immutable end;
     uint256 public immutable duration;
 
     constructor(uint256 _duration) {

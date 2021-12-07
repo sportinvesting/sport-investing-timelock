@@ -1,0 +1,78 @@
+{
+  "version": "3.2",
+  "log": [
+    {
+      "IERC20": {
+        "src": "@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "TokenLock": {
+        "src": "contracts\\TokenLock.sol:8",
+        "version": {
+          "withMetadata": "82851c635d05aa2f426b4377bde7bfcf05af5f2f295fc3cfa336d4f614a8b33e",
+          "withoutMetadata": "33180fa338325a13185d28b8273939b2a957c8fb76955b7b22994e8a7bc19b18",
+          "linkedWithoutMetadata": "33180fa338325a13185d28b8273939b2a957c8fb76955b7b22994e8a7bc19b18"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "(uint256)",
+          "deposit(address,uint256)",
+          "()",
+          "withdraw(address,uint256)",
+          "transferOwnership(address payable)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "TokenLock",
+            "src": "contracts\\TokenLock.sol:13"
+          },
+          {
+            "kind": "state-variable-immutable",
+            "name": "end",
+            "src": "contracts\\TokenLock.sol:10"
+          },
+          {
+            "kind": "state-variable-immutable",
+            "name": "duration",
+            "src": "contracts\\TokenLock.sol:11"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "TokenLock",
+              "label": "owner",
+              "type": "t_address_payable",
+              "src": "contracts\\TokenLock.sol:9"
+            }
+          ],
+          "types": {
+            "t_address_payable": {
+              "label": "address payable"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    }
+  ]
+}

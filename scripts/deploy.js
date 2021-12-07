@@ -5,6 +5,8 @@
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
 
+const DURATION = 60 * 60 * 24 * 365 // 1 Year
+
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
@@ -14,12 +16,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Timelock = await hre.ethers.getContractFactory("Timelock");
-  const timelock = await Timelock.deploy()
+  const TokenLock = await hre.ethers.getContractFactory("TokenLock")
+  const tokenLock = await TokenLock.deploy(DURATION)
 
-  await timelock.deployed();
+  await tokenLock.deployed()
 
-  console.log("Timelock contract deployed to:", timelock.address);
+  console.log("TokenLock contract deployed to:", tokenLock.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

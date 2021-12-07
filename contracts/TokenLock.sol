@@ -9,7 +9,7 @@ contract TokenLock {
     uint256 public immutable end;
     address payable public owner;
     uint256 public immutable duration;
-    
+
     constructor(uint256 _duration) {
         owner = payable(msg.sender);
         duration = _duration;
@@ -17,7 +17,7 @@ contract TokenLock {
     }
 
     function deposit(address token, uint256 amount) external {
-        require(amount > 0, 'Amount is zero');
+        require(amount > 0, "Amount is zero");
 
         IERC20(token).transferFrom(msg.sender, address(this), amount);
     }
@@ -25,8 +25,8 @@ contract TokenLock {
     receive() external payable {}
 
     function withdraw(address token, uint256 amount) external {
-        require(msg.sender == owner, 'Only owner');
-        require(block.timestamp >= end, 'Too early');
+        require(msg.sender == owner, "Only owner");
+        require(block.timestamp >= end, "Too early");
 
         if (token == address(0)) {
             owner.transfer(amount);
@@ -36,7 +36,7 @@ contract TokenLock {
     }
 
     function transferOwnership(address payable newOwner) external {
-        require(msg.sender == owner, 'Only owner');
+        require(msg.sender == owner, "Only owner");
 
         owner = newOwner;
     }

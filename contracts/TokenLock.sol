@@ -8,15 +8,16 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract TokenLock {
     uint256 public immutable end;
     address payable public owner;
-    uint256 public constant duration = 365 days;
+    uint256 public immutable duration;
     
-    constructor() {
+    constructor(uint256 _duration) {
         owner = payable(msg.sender);
-        end = block.timestamp + duration;
+        duration = _duration;
+        end = block.timestamp + _duration;
     }
 
     function deposit(address token, uint256 amount) external {
-        require(amount > 0, 'amount is zero');
+        require(amount > 0, 'Amount is zero');
 
         IERC20(token).transferFrom(msg.sender, address(this), amount);
     }
@@ -34,9 +35,9 @@ contract TokenLock {
         }
     }
 
-    function transferOwnership(address payable _newOwner) external {
+    function transferOwnership(address payable newOwner) external {
         require(msg.sender == owner, 'Only owner');
 
-        owner = _newOwner;
+        owner = newOwner;
     }
 }

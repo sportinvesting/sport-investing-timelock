@@ -10,12 +10,12 @@ contract Timelock {
     address payable public owner;
     uint public constant duration = 365 days;
     constructor() {
-        owner = address(uint160(msg.sender));
+        owner = address(uint160 payable(msg.sender));
         end = block.timestamp + duration;
     }
 
-    function deposit(address token, uint256 amount, uint period) external {
-        require(amount >= 0, 'amount is zero');
+    function deposit(address token, uint256 amount) external {
+        require(amount > 0, 'amount is zero');
 
         IERC20(token).transferFrom(msg.sender, address(this), amount);
     }
